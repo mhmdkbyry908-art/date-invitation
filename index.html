@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            direction: rtl;
+            font-family: "Vazirmatn", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.35), transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.3), transparent 30%),
+                linear-gradient(135deg, #09090f, #171126, #0b0b13);
+
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+   صفحه اصلی
+========================= */
+
+        .asli {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+
+        /* =========================
+   کارت اول
+========================= */
+
+        .div1 {
+            width: min(430px, 95vw);
+            min-height: 420px;
+
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            padding: 45px 30px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            gap: 35px;
+
+            overflow: hidden;
+        }
+
+
+        /* نور پشت کارت */
+
+        .div1::before,
+        .div2::before,
+        .div3::before,
+        .div4::before {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            background: #a855f7;
+
+            filter: blur(90px);
+            opacity: 0.25;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+        }
+
+
+        /* تیتر */
+
+        .div1>h1 {
+            position: relative;
+            z-index: 2;
+
+            margin: 0;
+
+            font-size: clamp(26px, 6vw, 40px);
+            font-weight: 800;
+
+            line-height: 1.6;
+            text-align: center;
+
+            color: #fff;
+
+            text-shadow:
+                0 5px 25px rgba(168, 85, 247, 0.45);
+        }
+
+
+        /* دکمه‌های صفحه اول */
+
+        .div1>button {
+            position: relative;
+            z-index: 5;
+
+            width: 160px;
+            min-height: 58px;
+
+            border: none;
+            border-radius: 18px;
+
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 700;
+
+            color: white;
+
+            cursor: pointer;
+
+            background: linear-gradient(135deg,
+                    #9333ea,
+                    #ec4899);
+
+            box-shadow:
+                0 10px 30px rgba(168, 85, 247, 0.35);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                filter 0.3s ease;
+        }
+
+        .div1>button:hover {
+            transform: translateY(-5px);
+            filter: brightness(1.15);
+
+            box-shadow:
+                0 18px 40px rgba(236, 72, 153, 0.45);
+        }
+
+        .div1>button:active {
+            transform: scale(0.95);
+        }
+
+
+        /* =========================
+   کارت انتخاب تاریخ
+========================= */
+
+        .div2 {
+            display: none;
+
+            flex-wrap: wrap;
+
+            width: min(650px, 95vw);
+            min-height: 700px;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 30px 90px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+            overflow-y: auto;
+        }
+
+
+        /* عنوان */
+
+        .div2>h1 {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            margin: 10px 0 20px;
+
+            text-align: center;
+
+            font-size: 27px;
+            font-weight: 800;
+
+            color: white;
+        }
+
+
+        .div2>h2 {
+            width: 100%;
+            height: auto;
+
+            margin: 5px 0 20px;
+
+            text-align: center;
+
+            font-size: 32px;
+            font-weight: 800;
+
+            color: #d8b4fe;
+        }
+
+
+        /* =========================
+   روزها
+========================= */
+
+        .div2>ul {
+            width: 100%;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .div2>ul>li {
+            width: 42px;
+            height: 42px;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 12px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            color: white;
+
+            list-style: none;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .div2>ul>li:hover {
+            transform: translateY(-4px);
+
+            background: rgba(168, 85, 247, 0.35);
+
+            box-shadow:
+                0 8px 20px rgba(168, 85, 247, 0.3);
+        }
+
+
+        /* =========================
+   ساعت و دقیقه
+========================= */
+
+        .div2>h3,
+        .div2>h4 {
+            width: 100%;
+            height: auto;
+
+            margin: 10px 0;
+
+            text-align: center;
+
+            font-size: 25px;
+            font-weight: 800;
+
+            color: #f5d0fe;
+        }
+
+
+        /* ساعت */
+
+        .div2>.saat {
+            margin: 10px 0 25px;
+        }
+
+
+        /* دقیقه */
+
+        .div2>.daghighe {
+            margin: 10px 130px 25px 110px;
+        }
+
+
+        /* =========================
+   دکمه بعدی
+========================= */
+
+        .div2>button {
+            margin: 20px auto 0;
+
+            width: 140px;
+            height: 55px;
+
+            border: none;
+            border-radius: 16px;
+
+            font-family: inherit;
+            font-size: 19px;
+            font-weight: 800;
+
+            color: white;
+
+            cursor: pointer;
+
+            background: linear-gradient(135deg,
+                    #7c3aed,
+                    #db2777);
+
+            box-shadow:
+                0 10px 30px rgba(124, 58, 237, 0.4);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .div2>button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 16px 35px rgba(219, 39, 119, 0.45);
+        }
+
+
+        /* =========================
+   کارت غذا
+========================= */
+
+        .div3 {
+            display: none;
+
+            flex-wrap: wrap;
+
+            width: min(650px, 95vw);
+            min-height: 650px;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 30px 90px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+            justify-content: center;
+            align-content: flex-start;
+
+            gap: 20px;
+
+            overflow-y: auto;
+        }
+
+
+        .div3>h2 {
+            width: 100%;
+            height: auto;
+
+            margin: 10px 0 25px;
+
+            text-align: center;
+
+            font-size: 30px;
+            font-weight: 800;
+
+            color: white;
+        }
+
+
+        /* عکس غذا */
+
+        .div3>img {
+            width: 230px;
+            height: 180px;
+
+            object-fit: cover;
+
+            border: 2px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                filter 0.3s ease;
+        }
+
+
+        .div3>img:hover {
+            transform: scale(1.05);
+
+            filter: brightness(1.1);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.45);
+        }
+
+
+        /* دکمه */
+
+        .div3>button {
+            width: 140px;
+            height: 55px;
+
+            margin: 25px auto 0;
+
+            border: none;
+            border-radius: 16px;
+
+            font-family: inherit;
+            font-size: 19px;
+            font-weight: 800;
+
+            color: white;
+
+            background: linear-gradient(135deg,
+                    #9333ea,
+                    #ec4899);
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px rgba(236, 72, 153, 0.35);
+
+            transition: 0.3s ease;
+        }
+
+        .div3>button:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 18px 40px rgba(236, 72, 153, 0.45);
+        }
+
+
+        /* =========================
+   صفحه آخر
+========================= */
+
+        .div4 {
+            display: none;
+
+            flex-wrap: wrap;
+
+            width: min(650px, 95vw);
+            min-height: 600px;
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 30px 90px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        /* متن نتیجه */
+
+        .div4>p {
+            width: 100%;
+
+            font-family: "Vazirmatn", sans-serif;
+
+            font-size: clamp(25px, 6vw, 45px);
+            font-weight: 800;
+
+            line-height: 2;
+
+            text-align: center;
+
+            color: white;
+
+            text-shadow:
+                0 5px 25px rgba(168, 85, 247, 0.4);
+        }
+
+
+        /* قلب */
+
+        .div4>span {
+            width: 100%;
+            height: auto;
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            font-family: "Vazirmatn", sans-serif;
+
+            font-size: clamp(25px, 6vw, 42px);
+            font-weight: 900;
+
+            color: #f472b6;
+
+            text-shadow:
+                0 0 25px rgba(244, 114, 182, 0.7);
+
+            animation: heart 1.2s infinite ease-in-out;
+        }
+
+
+        /* =========================
+   انیمیشن قلب
+========================= */
+
+        @keyframes heart {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+
+        /* =========================
+   اسکرول بار
+========================= */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#9333ea,
+                    #ec4899);
+
+            border-radius: 20px;
+        }
+
+
+        /* =========================
+   موبایل
+========================= */
+
+        @media (max-width: 600px) {
+
+            .asli {
+                padding: 12px;
+            }
+
+            .div1 {
+                min-height: 390px;
+                padding: 35px 20px;
+            }
+
+            .div1>h1 {
+                font-size: 27px;
+            }
+
+            .div2,
+            .div3,
+            .div4 {
+                width: 94vw;
+                min-height: 90vh;
+
+                padding: 25px 15px;
+
+                border-radius: 25px;
+            }
+
+            .div2>h1 {
+                font-size: 23px;
+            }
+
+            .div2>h2 {
+                font-size: 27px;
+            }
+
+            .div2>ul {
+                gap: 7px;
+            }
+
+            .div2>ul>li {
+                width: 38px;
+                height: 38px;
+
+                border-radius: 10px;
+
+                font-size: 14px;
+            }
+
+            .div3>h2 {
+                font-size: 24px;
+            }
+
+            .div3>img {
+                width: 145px;
+                height: 125px;
+            }
+
+            .div4>p {
+                font-size: 27px;
+            }
+
+            .div4>span {
+                font-size: 27px;
+            }
+        }
+
+
+        /* موبایل خیلی کوچک */
+
+        @media (max-width: 380px) {
+
+            .div2>ul>li {
+                width: 34px;
+                height: 34px;
+            }
+
+            .div3>img {
+                width: 125px;
+                height: 110px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="asli">
+        <div class="div1">
+            <h1 id="h1">کی باهم بریم بیرون ؟</h1>
+            <button onclick="go()">بزن بریم </button>
+            <button onclick="no()">ن نمیام</button>
+        </div>
+        <div class="div2">
+            <h1>.کی بریم ؟ تاریخ بگو</h1>
+            <h2>مهر ماه </h2>
+            <ul id="tarikh">
+                <li onclick="time(this)">1</li>
+                <li onclick="time(this)">2</li>
+                <li onclick="time(this)">3</li>
+                <li onclick="time(this)">4</li>
+                <li onclick="time(this)">5</li>
+                <li onclick="time(this)">6</li>
+                <li onclick="time(this)">7</li>
+                <li onclick="time(this)">8</li>
+                <li onclick="time(this)">9</li>
+                <li onclick="time(this)">10</li>
+                <li onclick="time(this)">11</li>
+                <li onclick="time(this)">12</li>
+                <li onclick="time(this)">13</li>
+                <li onclick="time(this)">14</li>
+                <li onclick="time(this)">15</li>
+                <li onclick="time(this)">16</li>
+                <li onclick="time(this)">17</li>
+                <li onclick="time(this)">18</li>
+                <li onclick="time(this)">19</li>
+                <li onclick="time(this)">20</li>
+                <li onclick="time(this)">21</li>
+                <li onclick="time(this)">22</li>
+                <li onclick="time(this)">23</li>
+                <li onclick="time(this)">24</li>
+                <li onclick="time(this)">25</li>
+                <li onclick="time(this)">26</li>
+                <li onclick="time(this)">27</li>
+                <li onclick="time(this)">28</li>
+                <li onclick="time(this)">29</li>
+                <li onclick="time(this)">30</li>
+            </ul>
+            <h3>ساعت </h3>
+            <ul class="saat">
+                <li onclick="saat(this)">12</li>
+                <li onclick="saat(this)">13</li>
+                <li onclick="saat(this)">14</li>
+                <li onclick="saat(this)">15</li>
+                <li onclick="saat(this)">16</li>
+                <li onclick="saat(this)">17</li>
+                <li onclick="saat(this)">18</li>
+                <li onclick="saat(this)">19</li>
+            </ul>
+            <h4>دقیقه</h4>
+            <ul class="daghighe">
+                <li onclick="daghighe(this)">05</li>
+                <li onclick="daghighe(this)">10</li>
+                <li onclick="daghighe(this)">15</li>
+                <li onclick="daghighe(this)">20</li>
+                <li onclick="daghighe(this)">25</li>
+                <li onclick="daghighe(this)">30</li>
+                <li onclick="daghighe(this)">35</li>
+                <li onclick="daghighe(this)">40</li>
+                <li onclick="daghighe(this)">45</li>
+                <li onclick="daghighe(this)">50</li>
+                <li onclick="daghighe(this)">55</li>
+                <li onclick="daghighe(this)">00</li>
+            </ul>
+            <!-- ادامه طراحی -->
+            <button onclick="next()">بعدی</button>
+        </div>
+        <div class="div3">
+            <h2>چی دوست داری بخوریم؟</h2>
+            <img onclick="food(this, 'بستنی')" src="img/icecrem.jpg" alt="">
+            <img onclick="food(this, 'قهوه')" src="img/coffee-.webp" alt="">
+            <img onclick="food(this, 'فست فود')" src="img/food.jpg" alt="">
+            <img onclick="food(this, 'ابمیوه')" src="img/jj.webp" alt="">
+            <button onclick="next2()">بعدی</button>
+        </div>
+        <div class="div4">
+            <p></p>
+            <span>❤❤میبینمت</span>
+        </div>
+    </div>
+</body>
+<script>
+    let h1 = document.getElementById('h1')
+    let butt = document.querySelectorAll('.div1>button')
+    let flag = 0
+    let e_rooz = ''
+    let e_saat = ''
+    let e_daghighe = ''
+    let e_food = ''
+    let p = document.querySelector('.div4>p')
+
+    const timeli = document.querySelectorAll('.div2>#tarikh>li')
+    const saatli = document.querySelectorAll('.div2>.saat>li')
+    const daghigheli = document.querySelectorAll('.div2>.daghighe>li')
+    const foodimg = document.querySelectorAll('.div3>img')
+
+    function no() {
+        flag++
+        if (flag == 1) {
+            butt[1].style.scale = '0.5'
+            h1.innerText = 'جدی نمیخوای بیای ؟'
+            butt[0].style.scale = '1.5'
+        } else if (flag == 2) {
+            butt[1].style.scale = '0.25'
+            h1.innerText = 'الان مطمعنی دیگه؟'
+            butt[0].style.scale = '1.75'
+
+        } else {
+            butt[1].style.scale = '0'
+            h1.innerText = 'باید بیای 😎😎'
+            butt[0].style.scale = '2'
+            butt[0].style.width = '40%'
+        }
+    }
+    function go() {
+        document.querySelector('.div1').style.display = 'none'
+        document.querySelector('.div2').style.display = 'flex'
+    }
+    function time(s) {
+        for (let i = 0; i < timeli.length; i++) {
+            timeli[i].style.color = 'black'
+            timeli[i].style.background = 'white'
+        }
+        s.style.border = '1px solid black'
+        s.style.background = 'purple'
+        e_rooz = s.innerText + ' مهر'
+    }
+    function saat(s) {
+        for (let i = 0; i < saatli.length; i++) {
+            saatli[i].style.color = 'black'
+            saatli[i].style.background = 'white'
+        }
+        s.style.border = '1px solid black'
+        s.style.background = 'purple'
+        e_saat = s.innerText
+    }
+    function daghighe(s) {
+        for (let i = 0; i < daghigheli.length; i++) {
+            daghigheli[i].style.color = 'black'
+            daghigheli[i].style.background = 'white'
+        }
+        s.style.border = '1px solid black'
+        s.style.background = 'purple'
+        e_daghighe = s.innerText
+    }
+    function next() {
+        document.querySelector('.div2').style.display = 'none'
+        document.querySelector('.div3').style.display = 'flex'
+    }
+    function food(s, ghaza) {
+        for (let i = 0; i < foodimg.length; i++) {
+            foodimg[i].style.border = '1px solid black'
+        }
+        s.style.border = '4px solid green'
+        e_food = ghaza
+    }
+    function next2() {
+        document.querySelector('.div3').style.display = 'none'
+        document.querySelector('.div4').style.display = 'flex'
+        e_saat = e_daghighe + ' : ' + e_saat
+        p.innerHTML = `
+        <br>روز : ${e_rooz}
+        <br>ساعت : ${e_saat}
+        <br>خوردنی : ${e_food}
+        `
+    }
+</script>
+
+</html>
