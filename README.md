@@ -40,17 +40,16 @@ This project was created as a practice project to improve my skills in:
 
 ## 📸 Screenshots
 
-### Main Page
-![Main Page](1.png)
-
-### Date & Time Selection
-![Date & Time](2.png)
-
-### Food Selection
-![Food Selection](3.png)
-
-### Final Result
-![Final Result](4.png)
+<table>
+  <tr>
+    <td><img src="1.png" alt="Main Page"></td>
+    <td><img src="2.png" alt="Date & Time"></td>
+  </tr>
+  <tr>
+    <td><img src="3.png" alt="Food Selection"></td>
+    <td><img src="4.png" alt="Final Result"></td>
+  </tr>
+</table>
 
 ## 👨‍💻 Author
 
